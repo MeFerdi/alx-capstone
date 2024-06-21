@@ -1,6 +1,6 @@
-# Guigoes - A serverless blog using GO and HTMX
+# Icode - A serverless blog using GO and HTMX
  
-This is the source code for my personal blog https://guigoes.com, it was built using Go and HTMX and deployed on Fly.io.
+This is the source code for my personal blog https://icode.com, it was built using Go and HTMX and deployed on Fly.io.
 
 ## Table of Contents
 
@@ -45,8 +45,8 @@ You will need
 ### Installation
 
 ```bash
-$ git clone hhttps://github.com/guilycst/guigoes
-$ cd guigoes
+$ git clone https://github.com/MeFerdi/alx-capstone.git
+$ cd alx-capstone
 $ make install
 ```
 
