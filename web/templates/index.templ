@@ -1,0 +1,54 @@
+package templates
+
+import "github.com/guilycst/guigoes/web/templates/state"
+
+templ Index(is state.IndexState) {
+	//container
+	<div class="m-auto max-w-prose pt-[50px] px-10">
+		for i, post := range is.Posts {
+			//blog post
+			<div class="flex flex-col">
+				<div class="flex flex-col md:flex-row-reverse md:items-center">
+					<a href={ templ.URL(post.Dir) } hx-get={ post.Dir + "?fragment=1" } hx-target="#main">
+						<div class="max-h-[160px] h-[160px] mb-[10px] md:w-[250px] md:h-[250px] md:max-h-[250px] md:mb-0 md:ml-[10px]">
+							<img class="w-full h-full object-cover md:object-scale-down" src={ post.Dir + post.Metadata.Thumb } alt={ post.Metadata.CoverAlt }/>
+						</div>
+					</a>
+					<div>
+						//post date
+						<div class="text-sm font-thin">{ post.Metadata.Author } | { LocalizeTime(post.Metadata.CreatedAt, is.Language) }</div>
+						//post title
+						<div class="mb-[3px">
+							<h2 class="font-black cursor-pointer">
+								<a href={ templ.URL(post.Dir) } hx-get={ post.Dir + "?fragment=1" } hx-target="#main">{ post.Metadata.Title }</a>
+							</h2>
+						</div>
+						//post description
+						<div class="text-base">
+							<p class="cursor-pointer">
+								{ post.Metadata.Description }
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="text-sm font-thin text-pretty mb-[10px] mt-[10px]">
+					for _, tag := range post.Metadata.Tags {
+						//post tags
+						<span class="mr-[5px] rounded-full bg-zinc-950 px-[8px] text-pretty">{ tag }</span>
+					}
+				</div>
+			</div>
+			if i != len(is.Posts)-1 {
+				//post separator
+				<hr class="mt-[10px] mb-[20px] border-zinc-300"/>
+			}
+		}
+		if len(is.Posts) == 0 {
+			//no posts
+			<div class="text-center">
+				<h1 class="font-black text-xl">¯\_(ツ)_/¯</h1>
+				<h2 class="font-normal text-xl">Nothing to see here</h2>
+			</div>
+		}
+	</div>
+}
