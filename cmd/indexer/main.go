@@ -3,12 +3,14 @@ package main
 import (
 	"log"
 
+	"icodeandblog/internal/ports"
+
+	"icodeandblog/internal/services"
+
 	"github.com/blevesearch/bleve/v2"
 	"github.com/blevesearch/bleve/v2/analysis/analyzer/keyword"
 	"github.com/blevesearch/bleve/v2/analysis/lang/en"
 	"github.com/blevesearch/bleve/v2/mapping"
-	"github.com/guilycst/guigoes/internal/ports"
-	"github.com/guilycst/guigoes/internal/services"
 	"github.com/guilycst/guigoes/pkg"
 )
 
